@@ -5,7 +5,27 @@ import com.yahya.interpreter.ash.expr.*;
 public class AstPrinter implements Visitor<String> {
 
     public static void main(String[] args) {
-       
+        Expr expr = new Binary(
+                new Unary(
+                        new Token(TokenType.MINUS, "-", null, 1),
+                        new Literal(123)
+                ),
+                new Token(TokenType.STAR, "*", null, 1),
+                new Grouping(
+                        new Binary(
+                                new Literal(45.67),
+                                new Token(TokenType.PLUS, "+", null, 1),
+                                new Grouping(
+                                        new Unary(
+                                                new Token(TokenType.MINUS, "-", null, 1),
+                                                new Literal(89.0)
+                                        )
+                                )
+                        )
+                )
+        );
+
+        System.out.println(new AstPrinter().print(expr));
     }
 
     String print(Expr expr) {
