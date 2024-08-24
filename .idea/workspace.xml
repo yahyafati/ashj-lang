@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Made GenerateAst tool">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/expr/Binary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/ash/expr/Binary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/expr/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/ash/expr/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/expr/Grouping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/ash/expr/Grouping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/ash/expr/Literal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/ash/expr/Unary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpretor/tool/GenerateAst.java" afterDir="false" />
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added Visitor Pattern">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Binary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Binary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Grouping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Grouping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,12 +80,12 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="GenerateAst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.yahya.interpretor.tool.GenerateAst" />
+      <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.tool.GenerateAst" />
       <module name="jlox.main" />
-      <option name="PROGRAM_PARAMETERS" value="src/main/java/com/yahya/interpretor/expr" />
+      <option name="PROGRAM_PARAMETERS" value="src/main/java/com/yahya/interpreter/ash/expr" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.yahya.interpretor.tool.*" />
+          <option name="PATTERN" value="com.yahya.interpreter.tool.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -209,7 +210,7 @@
       <workItem from="1684326868838" duration="614000" />
       <workItem from="1684517308255" duration="9793000" />
       <workItem from="1724423601071" duration="2149000" />
-      <workItem from="1724507216832" duration="2439000" />
+      <workItem from="1724507216832" duration="4367000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -241,7 +242,31 @@
       <option name="project" value="LOCAL" />
       <updated>1724510780768</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Made GenerateAst tool">
+      <option name="closed" value="true" />
+      <created>1724510835501</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724510835501</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Visitor Pattern">
+      <option name="closed" value="true" />
+      <created>1724513484809</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724513484809</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Visitor Pattern">
+      <option name="closed" value="true" />
+      <created>1724513492456</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724513492456</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +287,7 @@
     <MESSAGE value="added Scanner class" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Made GenerateAst tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made GenerateAst tool" />
+    <MESSAGE value="Added Visitor Pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Visitor Pattern" />
   </component>
 </project>

@@ -1,7 +1,7 @@
-package com.yahya.interpretor;
+package com.yahya.interpreter;
 
-import com.yahya.interpretor.ash.Scanner;
-import com.yahya.interpretor.ash.Token;
+import com.yahya.interpreter.ash.Scanner;
+import com.yahya.interpreter.ash.Token;
 
 import java.io.BufferedReader;
 import java.io.IOException;

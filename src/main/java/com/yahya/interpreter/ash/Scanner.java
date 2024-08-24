@@ -1,13 +1,13 @@
-package com.yahya.interpretor.ash;
+package com.yahya.interpreter.ash;
 
-import com.yahya.interpretor.Ash;
+import com.yahya.interpreter.Ash;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.yahya.interpretor.ash.TokenType.*;
+import static com.yahya.interpreter.ash.TokenType.*;
 
 public class Scanner {
     private static final Map<String, TokenType> keywords;

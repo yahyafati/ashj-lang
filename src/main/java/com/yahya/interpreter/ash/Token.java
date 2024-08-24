@@ -1,4 +1,4 @@
-package com.yahya.interpretor.ash;
+package com.yahya.interpreter.ash;
 
 public class Token {
     final TokenType type;
