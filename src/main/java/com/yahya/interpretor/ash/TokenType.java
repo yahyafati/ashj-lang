@@ -1,4 +1,4 @@
-package com.yahya.interpretor;
+package com.yahya.interpretor.ash;
 
 public enum TokenType {
     // Single-character tokens.

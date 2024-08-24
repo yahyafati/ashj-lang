@@ -1,5 +1,8 @@
 package com.yahya.interpretor;
 
+import com.yahya.interpretor.ash.Scanner;
+import com.yahya.interpretor.ash.Token;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +15,7 @@ public class Ash {
 
     static boolean hadError = false;
 
-    static void error(int line, String message) {
+    public static void error(int line, String message) {
         report(line, "", message);
     }
 
