@@ -26,3 +26,9 @@ var x = 10;
     print "Local scope x: " + x;
 }
 print "Global scope x: " + x;
+
+if (x == 10) {
+   print "x is not 20" + " x is " + x;
+} else {
+     print "x is 20";
+}

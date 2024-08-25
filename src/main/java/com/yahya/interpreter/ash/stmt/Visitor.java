@@ -8,4 +8,6 @@ public interface Visitor<R> {
     R visitVarStmt(Var stmt);
 
     R visitBlockStmt(Block stmt);
+
+    R visitIfStmt(If stmt);
 }
