@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added Global Variables">
-      <change afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added Scope">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Environment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Expression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.ash" beforeDir="false" afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +347,7 @@
       <workItem from="1724507216832" duration="5918000" />
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
-      <workItem from="1724589190814" duration="5670000" />
+      <workItem from="1724589190814" duration="6151000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -473,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724592492515</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added Scope">
+      <option name="closed" value="true" />
+      <created>1724597447502</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1724597447502</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +494,8 @@
     <MESSAGE value="Added Stmt classes" />
     <MESSAGE value="Added statement parsing" />
     <MESSAGE value="Added Global Variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Global Variables" />
+    <MESSAGE value="Added Scope" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Scope" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

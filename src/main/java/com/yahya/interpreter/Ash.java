@@ -30,8 +30,7 @@ public class Ash {
     }
 
     public static void runtimeError(RuntimeError error) {
-        System.out.println(error.getMessage() +
-                "\n[line " + error.token.line + "]");
+        System.out.println("[line " + error.token.line + "]: " + error.getMessage());
         hadRuntimeError = true;
     }
 
