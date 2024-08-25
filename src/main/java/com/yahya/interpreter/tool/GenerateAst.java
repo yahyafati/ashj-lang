@@ -3,10 +3,13 @@ package com.yahya.interpreter.tool;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
 
 public class GenerateAst {
+
+    private static final String PACKAGE_NAME = "com.yahya.interpreter.ash";
+
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Usage: generate_ast <output directory>");
@@ -14,15 +17,37 @@ public class GenerateAst {
         }
         String outputDir = args[0];
         String baseName = "Expr";
-        defineAst(outputDir, baseName, Map.of(
-                "Binary", List.of("Expr left", "Token operator", "Expr right"),
-                "Grouping", List.of("Expr expression"),
-                "Literal", List.of("Object value"),
-                "Unary", List.of("Token operator", "Expr right")
-        ));
+        defineAst(outputDir, baseName, List.of(
+                        new Type("Binary", List.of("Expr left", "Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token")),
+                        new Type("Grouping", List.of("Expr expression"), List.of()),
+                        new Type("Literal", List.of("Object value"), List.of()),
+                        new Type("Unary", List.of("Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token"))
+                ),
+                List.of(PACKAGE_NAME + ".Token")
+        );
+        defineAst(outputDir, "Stmt",
+                List.of(
+                        new Type("Expression", List.of("Expr expression"), List.of(PACKAGE_NAME + ".expr.Expr")),
+                        new Type("Print", List.of("Expr expression"), List.of(PACKAGE_NAME + ".expr.Expr"))
+                )
+        );
     }
 
-    private static void defineAst(String outputDir, String baseName, Map<String, List<String>> types) {
+    private static void defineAst(
+            String outputDirContainer,
+            String baseName,
+            List<Type> types
+    ) {
+        defineAst(outputDirContainer, baseName, types, List.of());
+    }
+
+    private static void defineAst(
+            String outputDirContainer,
+            String baseName,
+            List<Type> types,
+            List<String> imports
+    ) {
+        String outputDir = Path.of(outputDirContainer, baseName.toLowerCase()).toString();
         File outputDirFile = new File(outputDir);
         if (!outputDirFile.exists()) {
             boolean response = outputDirFile.mkdirs();
@@ -32,9 +57,12 @@ public class GenerateAst {
         }
         String path = outputDir + "/" + baseName + ".java";
         try (PrintWriter writer = new PrintWriter(path)) {
-            writer.println("package com.yahya.interpreter.ash.expr;");
+            writer.println("package " + PACKAGE_NAME + "." + baseName.toLowerCase() + ";");
             writer.println();
-            writer.println("import com.yahya.interpreter.ash.Token;");
+//            writer.println("import com.yahya.interpreter.ash.Token;");
+            for (String importStatement : imports) {
+                writer.println("import " + importStatement + ";");
+            }
             writer.println();
             writer.println("public abstract class " + baseName + " {");
 
@@ -46,18 +74,22 @@ public class GenerateAst {
             throw new RuntimeException(e);
         }
 
-        types.forEach((className, fields) -> {
-            defineType(outputDir, baseName, className, fields);
-            defineVisitor(outputDir, baseName, types);
+        types.forEach(type -> {
+            defineType(outputDir, baseName, type);
         });
+        defineVisitor(outputDir, baseName, types);
     }
 
-    private static void defineType(String outputDir, String baseName, String className, List<String> fieldList) {
+    private static void defineType(String outputDir, String baseName, Type type) {
+        String className = type.name;
+        List<String> fieldList = type.fields;
         String path = outputDir + "/" + className + ".java";
         try (PrintWriter writer = new PrintWriter(path)) {
-            writer.println("package com.yahya.interpreter.ash.expr;");
+            writer.println("package " + PACKAGE_NAME + "." + baseName.toLowerCase() + ";");
             writer.println();
-            writer.println("import com.yahya.interpreter.ash.Token;");
+            for (String importStatement : type.imports) {
+                writer.println("import " + importStatement + ";");
+            }
             writer.println();
             writer.println("public class " + className + " extends " + baseName + " {");
             for (String field : fieldList) {
@@ -83,18 +115,21 @@ public class GenerateAst {
         }
     }
 
-    private static void defineVisitor(String outputDir, String baseName, Map<String, List<String>> types) {
+    private static void defineVisitor(String outputDir, String baseName, List<Type> types) {
         String path = outputDir + "/Visitor.java";
         try (PrintWriter writer = new PrintWriter(path)) {
-            writer.println("package com.yahya.interpreter.ash.expr;");
+            writer.println("package " + PACKAGE_NAME + "." + baseName.toLowerCase() + ";");
             writer.println();
             writer.println("public interface Visitor<R> {");
-            for (String type : types.keySet()) {
-                writer.println("\tR visit" + type + baseName + "(" + type + " " + baseName.toLowerCase() + ");");
+            for (Type type : types) {
+                writer.println("\tR visit" + type.name + baseName + "(" + type.name + " " + baseName.toLowerCase() + ");");
             }
             writer.println("}");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private record Type(String name, List<String> fields, List<String> imports) {
     }
 }

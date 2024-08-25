@@ -1,5 +1,6 @@
 package com.yahya.interpreter.ash.expr;
 
+
 public class Literal extends Expr {
     public final Object value;
 
