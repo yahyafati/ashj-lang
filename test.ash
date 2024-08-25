@@ -1,12 +1,18 @@
 var a = 0;
 while (a < 10) {
-    if (a == 2) {
-        a = a + 1;
-        continue;
+    print "a: " + a;
+    var b = a;
+
+    for (var i = 0; i < b; i = i + 1) {
+        print i;
+
+        if (i == 5) {
+            break;
+        }
     }
-    print a;
-    if (a == 7) {
+    if (b == 6) {
         break;
     }
+    print "b - end";
     a = a + 1;
 }
