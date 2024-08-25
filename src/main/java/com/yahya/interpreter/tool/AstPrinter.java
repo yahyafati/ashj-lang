@@ -1,5 +1,7 @@
-package com.yahya.interpreter.ash;
+package com.yahya.interpreter.tool;
 
+import com.yahya.interpreter.ash.Token;
+import com.yahya.interpreter.ash.TokenType;
 import com.yahya.interpreter.ash.expr.*;
 
 public class AstPrinter implements Visitor<String> {
@@ -28,7 +30,7 @@ public class AstPrinter implements Visitor<String> {
         System.out.println(new AstPrinter().print(expr));
     }
 
-    String print(Expr expr) {
+    public String print(Expr expr) {
         return expr.accept(this);
     }
 

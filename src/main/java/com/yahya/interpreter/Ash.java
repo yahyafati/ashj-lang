@@ -1,7 +1,11 @@
 package com.yahya.interpreter;
 
+import com.yahya.interpreter.ash.Parser;
 import com.yahya.interpreter.ash.Scanner;
 import com.yahya.interpreter.ash.Token;
+import com.yahya.interpreter.ash.TokenType;
+import com.yahya.interpreter.ash.expr.Expr;
+import com.yahya.interpreter.tool.AstPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +23,14 @@ public class Ash {
         report(line, "", message);
     }
 
+    public static void error(Token token, String message) {
+        if (token.type == TokenType.EOF) {
+            report(token.line, " at end", message);
+        } else {
+            report(token.line, " at '" + token.lexeme + "'", message);
+        }
+    }
+
     private static void report(int line, String where, String message) {
         System.err.println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
@@ -27,10 +39,17 @@ public class Ash {
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
-        // For now, just print the tokens.
-        for (Token token : tokens) {
-            System.out.println(token);
+
+        Parser parser = new Parser(tokens);
+        Expr expression = parser.parse();
+
+        if (hadError) {
+            return;
         }
+
+        System.out.println(new AstPrinter().print(expression));
+
+
     }
 
     private static void runFile(String path) throws IOException {
