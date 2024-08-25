@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added While and Logical And and Or">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added break and continue statements">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -353,7 +352,7 @@
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
       <workItem from="1724589190814" duration="7231000" />
-      <workItem from="1724603484821" duration="1736000" />
+      <workItem from="1724603484821" duration="3610000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -505,7 +504,39 @@
       <option name="project" value="LOCAL" />
       <updated>1724604917846</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added for loops">
+      <option name="closed" value="true" />
+      <created>1724605376277</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1724605376277</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added break and continue statements">
+      <option name="closed" value="true" />
+      <created>1724606963514</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1724606963514</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added break and continue statements">
+      <option name="closed" value="true" />
+      <created>1724606968565</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1724606968565</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added break and continue statements">
+      <option name="closed" value="true" />
+      <created>1724607067898</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1724607067898</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +567,9 @@
     <MESSAGE value="Changed error reporting format" />
     <MESSAGE value="Added simple If Else statement" />
     <MESSAGE value="Added While and Logical And and Or" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added While and Logical And and Or" />
+    <MESSAGE value="Added for loops" />
+    <MESSAGE value="Added break and continue statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added break and continue statements" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -37,7 +37,9 @@ public class GenerateAst {
                         new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage)),
                         new Type("Block", List.of("List<Stmt> statements"), List.of("java.util.List")),
                         new Type("If", List.of("Expr condition", "Stmt thenBranch", "Stmt elseBranch"), List.of(exprPackage)),
-                        new Type("While", List.of("Expr condition", "Stmt body"), List.of(exprPackage))
+                        new Type("While", List.of("Expr condition", "Stmt body"), List.of(exprPackage)),
+                        new Type("Continue", List.of("Token token"), List.of(tokenPackage)),
+                        new Type("Break", List.of("Token token"), List.of(tokenPackage))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

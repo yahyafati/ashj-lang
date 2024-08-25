@@ -11,6 +11,8 @@ public class Interpreter implements
         com.yahya.interpreter.ash.stmt.Visitor<Void> {
 
     private Environment environment = new Environment();
+    private boolean breakFlag = false;
+    private boolean continueFlag = false;
 
     @Override
     public Object visitBinaryExpr(Binary expr) {
@@ -195,7 +197,30 @@ public class Interpreter implements
     public Void visitWhileStmt(While stmt) {
         while (isTruthy(evaluate(stmt.condition))) {
             execute(stmt.body);
+
+            if (continueFlag) {
+                continueFlag = false;
+                continue;
+            }
+
+            if (breakFlag) {
+                break;
+            }
         }
+        continueFlag = false;
+        breakFlag = false;
+        return null;
+    }
+
+    @Override
+    public Void visitContinueStmt(Continue stmt) {
+        continueFlag = true;
+        return null;
+    }
+
+    @Override
+    public Void visitBreakStmt(Break stmt) {
+        breakFlag = true;
         return null;
     }
 
@@ -204,6 +229,7 @@ public class Interpreter implements
         try {
             this.environment = environment;
             for (Stmt statement : statements) {
+                if (breakFlag || continueFlag) break;
                 execute(statement);
             }
         } finally {

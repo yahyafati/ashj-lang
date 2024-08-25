@@ -19,6 +19,8 @@ public class Parser {
     private final List<Token> tokens;
     private int current = 0;
 
+    private int loopDepth = 0;
+
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
     }
@@ -35,6 +37,8 @@ public class Parser {
         if (match(IF)) return ifStatement();
         if (match(WHILE)) return whileStatement();
         if (match(FOR)) return forStatement();
+        if (match(CONTINUE)) return continueStatement();
+        if (match(BREAK)) return breakStatement();
         if (match(PRINT)) return printStatement();
         if (match(LEFT_BRACE)) return new Block(block());
 
@@ -57,7 +61,9 @@ public class Parser {
         consume(LEFT_PAREN, "Expect '(' after 'while'.");
         Expr condition = expression();
         consume(RIGHT_PAREN, "Expect ')' after condition.");
+        increaseLoopDepth();
         Stmt body = statement();
+        decreaseLoopDepth();
         return new While(condition, body);
     }
 
@@ -98,6 +104,24 @@ public class Parser {
         }
 
         return body;
+    }
+
+    private Stmt continueStatement() {
+        Token previous = previous();
+        if (isNotInLoop()) {
+            throw error(previous, "Cannot use 'continue' outside of a loop.");
+        }
+        consume(SEMICOLON, "Expect ';' after 'continue'.");
+        return new Continue(previous);
+    }
+
+    private Stmt breakStatement() {
+        Token previous = previous();
+        if (isNotInLoop()) {
+            throw error(previous, "Cannot use 'break' outside of a loop.");
+        }
+        consume(SEMICOLON, "Expect ';' after 'break'.");
+        return new Break(previous);
     }
 
     private List<Stmt> block() {
@@ -327,6 +351,18 @@ public class Parser {
             }
             advance();
         }
+    }
+
+    private void increaseLoopDepth() {
+        loopDepth++;
+    }
+
+    private void decreaseLoopDepth() {
+        loopDepth--;
+    }
+
+    private boolean isNotInLoop() {
+        return loopDepth <= 0;
     }
 
     /**

@@ -1,49 +1,12 @@
-var a = "This is a test";
-var b = "This is a test too";
-
-print a;
-print b;
-
-var c = a + " " + b;
-print c;
-
-print a + " " + b + " " + c;
-
-var d = 10;
-var e = 20;
-var f = d + e;
-
-print d;
-
-// var z = 0;
-// var y = 1;
-// print y / z;
-
-// Scope test
-var x = 10;
-{
-    var x = 20;
-    print "Local scope x: " + x;
-}
-print "Global scope x: " + x;
-
-if (x == 10) {
-   print "x is not 20" + " x is " + x;
-} else {
-     print "x is 20";
-}
-
-x = 10;
-
-// while (x < 20) {
-//    print x;
-//    x = x + 1;
-// }
-
 var a = 0;
-var temp;
-for (var b = 1; a < 10000; b = temp + b) {
+while (a < 10) {
+    if (a == 2) {
+        a = a + 1;
+        continue;
+    }
     print a;
-    temp = a;
-    a = b;
+    if (a == 7) {
+        break;
+    }
+    a = a + 1;
 }

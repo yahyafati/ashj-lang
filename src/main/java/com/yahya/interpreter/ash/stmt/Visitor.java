@@ -12,4 +12,8 @@ public interface Visitor<R> {
     R visitIfStmt(If stmt);
 
     R visitWhileStmt(While stmt);
+
+    R visitContinueStmt(Continue stmt);
+
+    R visitBreakStmt(Break stmt);
 }
