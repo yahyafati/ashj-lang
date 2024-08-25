@@ -35,7 +35,15 @@ if (x == 10) {
 
 x = 10;
 
-while (x < 20) {
-    print x;
-    x = x + 1;
+// while (x < 20) {
+//    print x;
+//    x = x + 1;
+// }
+
+var a = 0;
+var temp;
+for (var b = 1; a < 10000; b = temp + b) {
+    print a;
+    temp = a;
+    a = b;
 }

@@ -34,6 +34,7 @@ public class Parser {
     private Stmt statement() {
         if (match(IF)) return ifStatement();
         if (match(WHILE)) return whileStatement();
+        if (match(FOR)) return forStatement();
         if (match(PRINT)) return printStatement();
         if (match(LEFT_BRACE)) return new Block(block());
 
@@ -58,6 +59,45 @@ public class Parser {
         consume(RIGHT_PAREN, "Expect ')' after condition.");
         Stmt body = statement();
         return new While(condition, body);
+    }
+
+    private Stmt forStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'for'.");
+        Stmt initializer;
+        if (match(SEMICOLON)) {
+            initializer = null;
+        } else if (match(VAR)) {
+            initializer = varDeclaration();
+        } else {
+            initializer = expressionStatement();
+        }
+
+        Expr condition = null;
+        if (!check(SEMICOLON)) {
+            condition = expression();
+        }
+        consume(SEMICOLON, "Expect ';' after loop condition.");
+
+        Expr increment = null;
+        if (!check(RIGHT_PAREN)) {
+            increment = expression();
+        }
+        consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+
+        Stmt body = statement();
+
+        if (increment != null) {
+            body = new Block(List.of(body, new Expression(increment)));
+        }
+
+        if (condition == null) condition = new Literal(true);
+        body = new While(condition, body);
+
+        if (initializer != null) {
+            body = new Block(List.of(initializer, body));
+        }
+
+        return body;
     }
 
     private List<Stmt> block() {

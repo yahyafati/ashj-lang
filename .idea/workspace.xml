@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added simple If Else statement">
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added While and Logical And and Or">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/If.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.ash" beforeDir="false" afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,7 +353,7 @@
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
       <workItem from="1724589190814" duration="7231000" />
-      <workItem from="1724603484821" duration="1353000" />
+      <workItem from="1724603484821" duration="1736000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -512,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724604295524</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added While and Logical And and Or">
+      <option name="closed" value="true" />
+      <created>1724604917846</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1724604917846</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +535,8 @@
     <MESSAGE value="Added Scope" />
     <MESSAGE value="Changed error reporting format" />
     <MESSAGE value="Added simple If Else statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added simple If Else statement" />
+    <MESSAGE value="Added While and Logical And and Or" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added While and Logical And and Or" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
