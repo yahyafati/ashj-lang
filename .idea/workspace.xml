@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added jar build and changed name">
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added simple If Else statement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
@@ -14,10 +14,12 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/If.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.ash" beforeDir="false" afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
     </list>
@@ -366,7 +368,7 @@
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
       <workItem from="1724589190814" duration="7231000" />
-      <workItem from="1724603484821" duration="791000" />
+      <workItem from="1724603484821" duration="1353000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -494,7 +496,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724597800942</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added simple If Else statement">
+      <option name="closed" value="true" />
+      <created>1724604292190</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1724604292190</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added simple If Else statement">
+      <option name="closed" value="true" />
+      <created>1724604295524</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1724604295524</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +541,8 @@
     <MESSAGE value="Added Global Variables" />
     <MESSAGE value="Added Scope" />
     <MESSAGE value="Changed error reporting format" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed error reporting format" />
+    <MESSAGE value="Added simple If Else statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simple If Else statement" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

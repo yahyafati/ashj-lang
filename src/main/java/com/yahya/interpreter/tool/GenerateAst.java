@@ -25,7 +25,8 @@ public class GenerateAst {
                         new Type("Literal", List.of("Object value"), List.of()),
                         new Type("Unary", List.of("Token operator", "Expr right"), List.of(tokenPackage)),
                         new Type("Variable", List.of("Token name"), List.of(tokenPackage)),
-                        new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage))
+                        new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage)),
+                        new Type("Logical", List.of("Expr left", "Token operator", "Expr right"), List.of(tokenPackage))
                 ),
                 List.of(tokenPackage)
         );
@@ -35,7 +36,8 @@ public class GenerateAst {
                         new Type("Print", List.of("Expr expression"), List.of(exprPackage)),
                         new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage)),
                         new Type("Block", List.of("List<Stmt> statements"), List.of("java.util.List")),
-                        new Type("If", List.of("Expr condition", "Stmt thenBranch", "Stmt elseBranch"), List.of(exprPackage))
+                        new Type("If", List.of("Expr condition", "Stmt thenBranch", "Stmt elseBranch"), List.of(exprPackage)),
+                        new Type("While", List.of("Expr condition", "Stmt body"), List.of(exprPackage))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

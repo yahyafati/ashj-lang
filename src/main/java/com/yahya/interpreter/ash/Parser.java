@@ -33,6 +33,7 @@ public class Parser {
 
     private Stmt statement() {
         if (match(IF)) return ifStatement();
+        if (match(WHILE)) return whileStatement();
         if (match(PRINT)) return printStatement();
         if (match(LEFT_BRACE)) return new Block(block());
 
@@ -49,6 +50,14 @@ public class Parser {
             elseBranch = statement();
         }
         return new If(condition, thenBranch, elseBranch);
+    }
+
+    private Stmt whileStatement() {
+        consume(LEFT_PAREN, "Expect '(' after 'while'.");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "Expect ')' after condition.");
+        Stmt body = statement();
+        return new While(condition, body);
     }
 
     private List<Stmt> block() {
@@ -100,7 +109,7 @@ public class Parser {
 
 
     private Expr assignment() {
-        Expr expr = equality();
+        Expr expr = or();
         if (match(EQUAL)) {
             Token equals = previous();
             Expr value = assignment();
@@ -116,6 +125,26 @@ public class Parser {
              * because the parser isn’t in a confused state where we need to go into panic mode and synchronize.
              */
             error(equals, "Invalid assignment target."); // Not throwing the error on purpose!
+        }
+        return expr;
+    }
+
+    private Expr or() {
+        Expr expr = and();
+        while (match(OR)) {
+            Token operator = previous();
+            Expr right = and();
+            expr = new Logical(expr, operator, right);
+        }
+        return expr;
+    }
+
+    private Expr and() {
+        Expr expr = equality();
+        while (match(AND)) {
+            Token operator = previous();
+            Expr right = equality();
+            expr = new Logical(expr, operator, right);
         }
         return expr;
     }

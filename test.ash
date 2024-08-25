@@ -32,3 +32,10 @@ if (x == 10) {
 } else {
      print "x is 20";
 }
+
+x = 10;
+
+while (x < 20) {
+    print x;
+    x = x + 1;
+}

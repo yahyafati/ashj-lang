@@ -10,4 +10,6 @@ public interface Visitor<R> {
     R visitBlockStmt(Block stmt);
 
     R visitIfStmt(If stmt);
+
+    R visitWhileStmt(While stmt);
 }
