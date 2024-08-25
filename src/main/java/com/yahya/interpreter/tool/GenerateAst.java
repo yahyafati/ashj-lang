@@ -33,7 +33,8 @@ public class GenerateAst {
                 List.of(
                         new Type("Expression", List.of("Expr expression"), List.of(exprPackage)),
                         new Type("Print", List.of("Expr expression"), List.of(exprPackage)),
-                        new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage))
+                        new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage)),
+                        new Type("Block", List.of("List<Stmt> statements"), List.of("java.util.List"))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

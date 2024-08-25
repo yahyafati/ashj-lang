@@ -2,10 +2,7 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
-import com.yahya.interpreter.ash.stmt.Expression;
-import com.yahya.interpreter.ash.stmt.Print;
-import com.yahya.interpreter.ash.stmt.Stmt;
-import com.yahya.interpreter.ash.stmt.Var;
+import com.yahya.interpreter.ash.stmt.*;
 
 import java.util.List;
 
@@ -13,7 +10,7 @@ public class Interpreter implements
         com.yahya.interpreter.ash.expr.Visitor<Object>,
         com.yahya.interpreter.ash.stmt.Visitor<Void> {
 
-    private final Environment environment = new Environment();
+    private Environment environment = new Environment();
 
     @Override
     public Object visitBinaryExpr(Binary expr) {
@@ -165,5 +162,23 @@ public class Interpreter implements
         }
         environment.define(stmt.name.lexeme, value);
         return null;
+    }
+
+    @Override
+    public Void visitBlockStmt(Block stmt) {
+        executeBlock(stmt.statements, new Environment(environment));
+        return null;
+    }
+
+    void executeBlock(List<Stmt> statements, Environment environment) {
+        Environment previous = this.environment;
+        try {
+            this.environment = environment;
+            for (Stmt statement : statements) {
+                execute(statement);
+            }
+        } finally {
+            this.environment = previous;
+        }
     }
 }

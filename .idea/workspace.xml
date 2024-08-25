@@ -4,20 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added statement parsing">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Environment.java" afterDir="false" />
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added Global Variables">
+      <change afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Assign.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Expression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +32,42 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="jlox" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,28 +103,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.ashj-lang [:Ash.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ashj-lang [:AstPrinter.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ashj-lang [:GenerateAst.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.ashj-lang [:Ash.main()].executor": "Run",
+    "Gradle.ashj-lang [:AstPrinter.main()].executor": "Run",
+    "Gradle.ashj-lang [:GenerateAst.main()].executor": "Run",
+    "Gradle.ashj-lang [build].executor": "Run",
+    "Gradle.ashj-lang [jar].executor": "Run",
+    "Gradle.ashj-lang.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.yahya.interpreter.ash" />
@@ -95,6 +137,7 @@
     <configuration name="Ash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.Ash" />
       <module name="jlox.main" />
+      <option name="PROGRAM_PARAMETERS" value="test.ash" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.yahya.interpreter.ash.*" />
@@ -108,20 +151,6 @@
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.tool.AstPrinter" />
       <module name="jlox.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.yahya.interpreter.tool.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GenerateAst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.tool.GenerateAst" />
-      <module name="jlox.main" />
-      <option name="PROGRAM_PARAMETERS" value="src/main/java/com/yahya/interpreter/ash" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.yahya.interpreter.tool.*" />
@@ -151,6 +180,70 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ashj-lang [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ashj-lang [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ashj-lang" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -233,10 +326,15 @@
     <list>
       <item itemvalue="Application.Ash" />
       <item itemvalue="Application.AstPrinter" />
-      <item itemvalue="Application.GenerateAst" />
+      <item itemvalue="Gradle.ashj-lang" />
+      <item itemvalue="Gradle.ashj-lang [build]" />
+      <item itemvalue="Gradle.ashj-lang [jar]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ashj-lang [jar]" />
+        <item itemvalue="Gradle.ashj-lang [build]" />
+        <item itemvalue="Gradle.ashj-lang" />
         <item itemvalue="Application.Ash" />
         <item itemvalue="Application.AstPrinter" />
       </list>
@@ -263,7 +361,7 @@
       <workItem from="1724507216832" duration="5918000" />
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
-      <workItem from="1724589190814" duration="3278000" />
+      <workItem from="1724589190814" duration="5670000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -359,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724583867120</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added Global Variables">
+      <option name="closed" value="true" />
+      <created>1724592486191</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724592486191</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added Global Variables">
+      <option name="closed" value="true" />
+      <created>1724592492515</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724592492515</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +499,8 @@
     <MESSAGE value="Added a Parser" />
     <MESSAGE value="Added Stmt classes" />
     <MESSAGE value="Added statement parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added statement parsing" />
+    <MESSAGE value="Added Global Variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Global Variables" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

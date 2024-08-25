@@ -2,15 +2,13 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
-import com.yahya.interpreter.ash.stmt.Expression;
-import com.yahya.interpreter.ash.stmt.Print;
-import com.yahya.interpreter.ash.stmt.Stmt;
-import com.yahya.interpreter.ash.stmt.Var;
+import com.yahya.interpreter.ash.stmt.*;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.yahya.interpreter.ash.TokenType.*;
@@ -25,9 +23,68 @@ public class Parser {
         this.tokens = tokens;
     }
 
+    public List<Stmt> parse() {
+        List<Stmt> statements = new java.util.ArrayList<>();
+        while (!isAtEnd()) {
+            statements.add(declaration());
+        }
+        return statements;
+    }
+
+    private Stmt statement() {
+        if (match(PRINT)) return printStatement();
+        if (match(LEFT_BRACE)) return new Block(block());
+
+        return expressionStatement();
+    }
+
+    private List<Stmt> block() {
+        List<Stmt> statements = new ArrayList<>();
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            statements.add(declaration());
+        }
+        consume(RIGHT_BRACE, "Expect '}' after block.");
+        return statements;
+    }
+
+
+    private Stmt declaration() {
+        try {
+            if (match(VAR)) return varDeclaration();
+
+            return statement();
+        } catch (ParseError error) {
+            synchronize();
+            return null;
+        }
+    }
+
+    private Stmt varDeclaration() {
+        Token name = consume(IDENTIFIER, "Expect variable name.");
+        Expr initializer = null;
+        if (match(EQUAL)) {
+            initializer = expression();
+        }
+        consume(SEMICOLON, "Expect ';' after variable declaration.");
+        return new Var(name, initializer);
+    }
+
+    private Stmt printStatement() {
+        Expr value = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Print(value);
+    }
+
+    private Stmt expressionStatement() {
+        Expr expr = expression();
+        consume(SEMICOLON, "Expect ';' after expression.");
+        return new Expression(expr);
+    }
+
     private Expr expression() {
         return assignment();
     }
+
 
     private Expr assignment() {
         Expr expr = equality();
@@ -118,52 +175,6 @@ public class Parser {
         throw error(peek(), "Expect expression.");
     }
 
-    private Stmt varDeclaration() {
-        Token name = consume(IDENTIFIER, "Expect variable name.");
-        Expr initializer = null;
-        if (match(EQUAL)) {
-            initializer = expression();
-        }
-        consume(SEMICOLON, "Expect ';' after variable declaration.");
-        return new Var(name, initializer);
-    }
-
-    private Stmt statement() {
-        if (match(PRINT)) return printStatement();
-
-        return expressionStatement();
-    }
-
-    private Stmt declaration() {
-        try {
-            if (match(VAR)) return varDeclaration();
-
-            return statement();
-        } catch (ParseError error) {
-            synchronize();
-            return null;
-        }
-    }
-
-    private Stmt printStatement() {
-        Expr value = expression();
-        consume(SEMICOLON, "Expect ';' after value.");
-        return new Print(value);
-    }
-
-    private Stmt expressionStatement() {
-        Expr expr = expression();
-        consume(SEMICOLON, "Expect ';' after expression.");
-        return new Expression(expr);
-    }
-
-    public List<Stmt> parse() {
-        List<Stmt> statements = new java.util.ArrayList<>();
-        while (!isAtEnd()) {
-            statements.add(declaration());
-        }
-        return statements;
-    }
 
     @ConsumingFunction
     private Token consume(TokenType type, String message) {
