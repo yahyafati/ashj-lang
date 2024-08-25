@@ -1,5 +1,7 @@
 package com.yahya.interpreter.ash;
 
+import java.util.Set;
+
 public enum TokenType {
     // Single-character tokens.
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -20,5 +22,9 @@ public enum TokenType {
     // Keywords.
     AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,
     PRINT, RETURN, SUPER, THIS, TRUE, VAR, WHILE,
-    EOF
+    EOF;
+
+    public static final Set<TokenType> STRICTLY_NUMBER_ONLY_OPERATORS = Set.of(
+            MINUS, SLASH, STAR, GREATER, GREATER_EQUAL, LESS, LESS_EQUAL
+    );
 }

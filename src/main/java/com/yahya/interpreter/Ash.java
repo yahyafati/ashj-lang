@@ -1,11 +1,7 @@
 package com.yahya.interpreter;
 
-import com.yahya.interpreter.ash.Parser;
-import com.yahya.interpreter.ash.Scanner;
-import com.yahya.interpreter.ash.Token;
-import com.yahya.interpreter.ash.TokenType;
+import com.yahya.interpreter.ash.*;
 import com.yahya.interpreter.ash.expr.Expr;
-import com.yahya.interpreter.tool.AstPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +13,9 @@ import java.util.List;
 
 public class Ash {
 
+    private static final Interpreter interpreter = new Interpreter();
     static boolean hadError = false;
+    static boolean hadRuntimeError = false;
 
     public static void error(int line, String message) {
         report(line, "", message);
@@ -29,6 +27,12 @@ public class Ash {
         } else {
             report(token.line, " at '" + token.lexeme + "'", message);
         }
+    }
+
+    public static void runtimeError(RuntimeError error) {
+        System.err.println(error.getMessage() +
+                "\n[line " + error.token.line + "]");
+        hadRuntimeError = true;
     }
 
     private static void report(int line, String where, String message) {
@@ -47,7 +51,7 @@ public class Ash {
             return;
         }
 
-        System.out.println(new AstPrinter().print(expression));
+        interpreter.interpret(expression);
 
 
     }
@@ -58,6 +62,7 @@ public class Ash {
 
         // Indicate an error in the exit code.
         if (hadError) System.exit(65); // 65 is the exit code for data format error
+        if (hadRuntimeError) System.exit(70); // 70 is the exit code for internal software error
     }
 
     private static void runPrompt() throws IOException {
