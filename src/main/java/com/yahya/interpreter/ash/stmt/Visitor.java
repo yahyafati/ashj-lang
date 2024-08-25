@@ -4,4 +4,6 @@ public interface Visitor<R> {
     R visitExpressionStmt(Expression stmt);
 
     R visitPrintStmt(Print stmt);
+
+    R visitVarStmt(Var stmt);
 }

@@ -30,13 +30,13 @@ public class Ash {
     }
 
     public static void runtimeError(RuntimeError error) {
-        System.err.println(error.getMessage() +
+        System.out.println(error.getMessage() +
                 "\n[line " + error.token.line + "]");
         hadRuntimeError = true;
     }
 
     private static void report(int line, String where, String message) {
-        System.err.println("[line " + line + "] Error" + where + ": " + message);
+        System.out.println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
     }
 
@@ -71,7 +71,17 @@ public class Ash {
         for (; ; ) {
             System.out.print(">> ");
             String line = reader.readLine();
-            if (line == null) break;
+            if (line == null || line.equals("/exit")) {
+                break;
+            }
+            if (line.equals("/clear")) {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                continue;
+            }
+            if (line.trim().isEmpty()) {
+                continue;
+            }
             run(line);
         }
 

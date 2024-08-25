@@ -8,4 +8,8 @@ public interface Visitor<R> {
     R visitLiteralExpr(Literal expr);
 
     R visitUnaryExpr(Unary expr);
+
+    R visitVariableExpr(Variable expr);
+
+    R visitAssignExpr(Assign expr);
 }

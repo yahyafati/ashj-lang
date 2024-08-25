@@ -5,12 +5,15 @@ import com.yahya.interpreter.ash.expr.*;
 import com.yahya.interpreter.ash.stmt.Expression;
 import com.yahya.interpreter.ash.stmt.Print;
 import com.yahya.interpreter.ash.stmt.Stmt;
+import com.yahya.interpreter.ash.stmt.Var;
 
 import java.util.List;
 
 public class Interpreter implements
         com.yahya.interpreter.ash.expr.Visitor<Object>,
         com.yahya.interpreter.ash.stmt.Visitor<Void> {
+
+    private final Environment environment = new Environment();
 
     @Override
     public Object visitBinaryExpr(Binary expr) {
@@ -61,6 +64,18 @@ public class Interpreter implements
             case BANG -> !isTruthy(right);
             default -> null;
         };
+    }
+
+    @Override
+    public Object visitVariableExpr(Variable expr) {
+        return environment.get(expr.name);
+    }
+
+    @Override
+    public Object visitAssignExpr(Assign expr) {
+        Object value = evaluate(expr.value);
+        environment.assign(expr.name, value);
+        return value;
     }
 
     @Override
@@ -139,6 +154,16 @@ public class Interpreter implements
     public Void visitPrintStmt(Print stmt) {
         Object value = evaluate(stmt.expression);
         System.out.println(stringify(value));
+        return null;
+    }
+
+    @Override
+    public Void visitVarStmt(Var stmt) {
+        Object value = null;
+        if (stmt.initializer != null) {
+            value = evaluate(stmt.initializer);
+        }
+        environment.define(stmt.name.lexeme, value);
         return null;
     }
 }

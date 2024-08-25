@@ -16,30 +16,29 @@ public class GenerateAst {
             System.exit(64); // 64 is the exit code for command line usage error
         }
         String outputDir = args[0];
-        String baseName = "Expr";
-        defineAst(outputDir, baseName, List.of(
+
+        final String tokenPackage = PACKAGE_NAME + ".Token";
+        final String exprPackage = PACKAGE_NAME + ".expr.Expr";
+        defineAst(outputDir, "Expr", List.of(
                         new Type("Binary", List.of("Expr left", "Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token")),
                         new Type("Grouping", List.of("Expr expression"), List.of()),
                         new Type("Literal", List.of("Object value"), List.of()),
-                        new Type("Unary", List.of("Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token"))
+                        new Type("Unary", List.of("Token operator", "Expr right"), List.of(tokenPackage)),
+                        new Type("Variable", List.of("Token name"), List.of(tokenPackage)),
+                        new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage))
                 ),
-                List.of(PACKAGE_NAME + ".Token")
+                List.of(tokenPackage)
         );
         defineAst(outputDir, "Stmt",
                 List.of(
-                        new Type("Expression", List.of("Expr expression"), List.of(PACKAGE_NAME + ".expr.Expr")),
-                        new Type("Print", List.of("Expr expression"), List.of(PACKAGE_NAME + ".expr.Expr"))
-                )
+                        new Type("Expression", List.of("Expr expression"), List.of(exprPackage)),
+                        new Type("Print", List.of("Expr expression"), List.of(exprPackage)),
+                        new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage))
+                ),
+                List.of(tokenPackage, exprPackage)
         );
     }
 
-    private static void defineAst(
-            String outputDirContainer,
-            String baseName,
-            List<Type> types
-    ) {
-        defineAst(outputDirContainer, baseName, types, List.of());
-    }
 
     private static void defineAst(
             String outputDirContainer,

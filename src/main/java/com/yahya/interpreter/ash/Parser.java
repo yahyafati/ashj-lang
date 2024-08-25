@@ -5,10 +5,16 @@ import com.yahya.interpreter.ash.expr.*;
 import com.yahya.interpreter.ash.stmt.Expression;
 import com.yahya.interpreter.ash.stmt.Print;
 import com.yahya.interpreter.ash.stmt.Stmt;
+import com.yahya.interpreter.ash.stmt.Var;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.List;
 
 import static com.yahya.interpreter.ash.TokenType.*;
+
 
 public class Parser {
 
@@ -20,7 +26,28 @@ public class Parser {
     }
 
     private Expr expression() {
-        return equality();
+        return assignment();
+    }
+
+    private Expr assignment() {
+        Expr expr = equality();
+        if (match(EQUAL)) {
+            Token equals = previous();
+            Expr value = assignment();
+            // Why aren't we checking if the left side is a variable,
+            // before evaluating the right side?
+            if (expr instanceof Variable) {
+                Token name = ((Variable) expr).name;
+                return new Assign(name, value);
+            }
+
+            /*
+             *  We report an error if the left-hand side isn’t a valid assignment target, but we don’t throw it
+             * because the parser isn’t in a confused state where we need to go into panic mode and synchronize.
+             */
+            error(equals, "Invalid assignment target."); // Not throwing the error on purpose!
+        }
+        return expr;
     }
 
     private Expr equality() {
@@ -79,6 +106,9 @@ public class Parser {
         if (match(NUMBER, STRING)) {
             return new Literal(previous().literal);
         }
+        if (match(IDENTIFIER)) {
+            return new Variable(previous());
+        }
         if (match(LEFT_PAREN)) {
             Expr expr = expression();
             consume(RIGHT_PAREN, "Expect ')' after expression.");
@@ -88,10 +118,31 @@ public class Parser {
         throw error(peek(), "Expect expression.");
     }
 
+    private Stmt varDeclaration() {
+        Token name = consume(IDENTIFIER, "Expect variable name.");
+        Expr initializer = null;
+        if (match(EQUAL)) {
+            initializer = expression();
+        }
+        consume(SEMICOLON, "Expect ';' after variable declaration.");
+        return new Var(name, initializer);
+    }
+
     private Stmt statement() {
         if (match(PRINT)) return printStatement();
 
         return expressionStatement();
+    }
+
+    private Stmt declaration() {
+        try {
+            if (match(VAR)) return varDeclaration();
+
+            return statement();
+        } catch (ParseError error) {
+            synchronize();
+            return null;
+        }
     }
 
     private Stmt printStatement() {
@@ -109,11 +160,12 @@ public class Parser {
     public List<Stmt> parse() {
         List<Stmt> statements = new java.util.ArrayList<>();
         while (!isAtEnd()) {
-            statements.add(statement());
+            statements.add(declaration());
         }
         return statements;
     }
 
+    @ConsumingFunction
     private Token consume(TokenType type, String message) {
         if (check(type)) return advance();
         throw error(peek(), message);
@@ -124,6 +176,14 @@ public class Parser {
         return new ParseError();
     }
 
+    /**
+     * Checks if the current token matches any of the given types.
+     * If a match is found, <b>advances</b> to the next token.
+     *
+     * @param types the types to match
+     * @return true if any of the types match, false otherwise
+     */
+    @ConsumingFunction
     private boolean match(TokenType... types) {
         for (TokenType type : types) {
             if (check(type)) {
@@ -139,6 +199,7 @@ public class Parser {
         return peek().type == type;
     }
 
+    @ConsumingFunction
     private Token advance() {
         if (!isAtEnd()) current++;
         return previous();
@@ -173,6 +234,14 @@ public class Parser {
             }
             advance();
         }
+    }
+
+    /**
+     * Annotation to indicate that a function consumes tokens.
+     */
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
+    @interface ConsumingFunction {
     }
 
     private static class ParseError extends RuntimeException {
