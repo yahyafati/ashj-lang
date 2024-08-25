@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Added Scope">
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Changed error reporting format">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.ash" beforeDir="false" afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,22 +32,22 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="ashj" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="ashj" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="ashj" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="jlox" type="f1a62948:ProjectNode" />
+                <item name="ashj" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
@@ -91,6 +93,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Ash.executor": "Run",
+    "Gradle.Build ashj-lang.executor": "Run",
     "Gradle.ashj-lang [:Ash.main()].executor": "Run",
     "Gradle.ashj-lang [:AstPrinter.main()].executor": "Run",
     "Gradle.ashj-lang [:GenerateAst.main()].executor": "Run",
@@ -119,10 +123,12 @@
       <recent name="com.yahya.interpreter.ash" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Ash">
+  <component name="RunManager" selected="Application.AshREPL">
     <configuration name="Ash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.Ash" />
-      <module name="jlox.main" />
+      <module name="ashj.main" />
       <option name="PROGRAM_PARAMETERS" value="test.ash" />
       <extension name="coverage">
         <pattern>
@@ -134,9 +140,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AshREPL" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.Ash" />
+      <module name="ashj.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.yahya.interpreter.tool.AstPrinter" />
-      <module name="jlox.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.yahya.interpreter.tool.*" />
@@ -195,7 +209,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -310,6 +324,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.AshREPL" />
       <item itemvalue="Application.Ash" />
       <item itemvalue="Application.AstPrinter" />
       <item itemvalue="Gradle.ashj-lang" />
@@ -318,10 +333,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Ash" />
         <item itemvalue="Gradle.ashj-lang [jar]" />
         <item itemvalue="Gradle.ashj-lang [build]" />
         <item itemvalue="Gradle.ashj-lang" />
-        <item itemvalue="Application.Ash" />
         <item itemvalue="Application.AstPrinter" />
       </list>
     </recent_temporary>
@@ -347,7 +362,7 @@
       <workItem from="1724507216832" duration="5918000" />
       <workItem from="1724519765504" duration="1000" />
       <workItem from="1724519770340" duration="6977000" />
-      <workItem from="1724589190814" duration="6151000" />
+      <workItem from="1724589190814" duration="7231000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -467,7 +482,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724597447502</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Changed error reporting format">
+      <option name="closed" value="true" />
+      <created>1724597800942</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724597800942</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,8 +518,20 @@
     <MESSAGE value="Added statement parsing" />
     <MESSAGE value="Added Global Variables" />
     <MESSAGE value="Added Scope" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Scope" />
+    <MESSAGE value="Changed error reporting format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed error reporting format" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/yahya/interpreter/Ash.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

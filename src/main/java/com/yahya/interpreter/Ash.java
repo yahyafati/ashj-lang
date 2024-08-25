@@ -51,8 +51,6 @@ public class Ash {
         }
 
         interpreter.interpret(statements);
-
-
     }
 
     private static void runFile(String path) throws IOException {
@@ -68,9 +66,11 @@ public class Ash {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         for (; ; ) {
+            hadError = false; // TODO: This is a hack to reset the error state. Fix this.
             System.out.print(">> ");
             String line = reader.readLine();
             if (line == null || line.equals("/exit")) {
+                System.out.println("Ciao!");
                 break;
             }
             if (line.equals("/clear")) {
@@ -95,6 +95,10 @@ public class Ash {
         } else if (args.length == 1) {
             runFile(args[0]);
         } else {
+            System.out.println("Welcome to Ash!");
+            System.out.println("Type /exit to exit the interpreter.");
+            System.out.println("Type /clear to clear the screen.");
+            System.out.println("-----------------------------");
             runPrompt();
         }
     }
