@@ -2,8 +2,15 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.stmt.Expression;
+import com.yahya.interpreter.ash.stmt.Print;
+import com.yahya.interpreter.ash.stmt.Stmt;
 
-public class Interpreter implements Visitor<Object> {
+import java.util.List;
+
+public class Interpreter implements
+        com.yahya.interpreter.ash.expr.Visitor<Object>,
+        com.yahya.interpreter.ash.stmt.Visitor<Void> {
 
     @Override
     public Object visitBinaryExpr(Binary expr) {
@@ -92,13 +99,18 @@ public class Interpreter implements Visitor<Object> {
         throw new RuntimeError(operator, "Operands must be numbers.");
     }
 
-    public void interpret(Expr expression) {
+    public void interpret(List<Stmt> statements) {
         try {
-            Object value = evaluate(expression);
-            System.out.println(stringify(value));
+            for (Stmt statement : statements) {
+                execute(statement);
+            }
         } catch (RuntimeError error) {
             Ash.runtimeError(error);
         }
+    }
+
+    private void execute(Stmt stmt) {
+        stmt.accept(this);
     }
 
     private String stringify(Object object) {
@@ -115,5 +127,18 @@ public class Interpreter implements Visitor<Object> {
             text = text.substring(0, text.length() - 2);
         }
         return text;
+    }
+
+    @Override
+    public Void visitExpressionStmt(Expression stmt) {
+        evaluate(stmt.expression);
+        return null;
+    }
+
+    @Override
+    public Void visitPrintStmt(Print stmt) {
+        Object value = evaluate(stmt.expression);
+        System.out.println(stringify(value));
+        return null;
     }
 }

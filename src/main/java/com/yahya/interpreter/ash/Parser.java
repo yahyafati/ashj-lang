@@ -2,6 +2,9 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.stmt.Expression;
+import com.yahya.interpreter.ash.stmt.Print;
+import com.yahya.interpreter.ash.stmt.Stmt;
 
 import java.util.List;
 
@@ -85,12 +88,30 @@ public class Parser {
         throw error(peek(), "Expect expression.");
     }
 
-    public Expr parse() {
-        try {
-            return expression();
-        } catch (ParseError error) {
-            return null;
+    private Stmt statement() {
+        if (match(PRINT)) return printStatement();
+
+        return expressionStatement();
+    }
+
+    private Stmt printStatement() {
+        Expr value = expression();
+        consume(SEMICOLON, "Expect ';' after value.");
+        return new Print(value);
+    }
+
+    private Stmt expressionStatement() {
+        Expr expr = expression();
+        consume(SEMICOLON, "Expect ';' after expression.");
+        return new Expression(expr);
+    }
+
+    public List<Stmt> parse() {
+        List<Stmt> statements = new java.util.ArrayList<>();
+        while (!isAtEnd()) {
+            statements.add(statement());
         }
+        return statements;
     }
 
     private Token consume(TokenType type, String message) {
