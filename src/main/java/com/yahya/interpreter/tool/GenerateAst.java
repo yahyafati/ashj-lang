@@ -19,6 +19,7 @@ public class GenerateAst {
 
         final String tokenPackage = PACKAGE_NAME + ".Token";
         final String exprPackage = PACKAGE_NAME + ".expr.Expr";
+        final String listPackage = "java.util.List";
         defineAst(outputDir, "Expr", List.of(
                         new Type("Binary", List.of("Expr left", "Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token")),
                         new Type("Grouping", List.of("Expr expression"), List.of()),
@@ -26,7 +27,8 @@ public class GenerateAst {
                         new Type("Unary", List.of("Token operator", "Expr right"), List.of(tokenPackage)),
                         new Type("Variable", List.of("Token name"), List.of(tokenPackage)),
                         new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage)),
-                        new Type("Logical", List.of("Expr left", "Token operator", "Expr right"), List.of(tokenPackage))
+                        new Type("Logical", List.of("Expr left", "Token operator", "Expr right"), List.of(tokenPackage)),
+                        new Type("Call", List.of("Expr callee", "Token paren", "List<Expr> arguments"), List.of(tokenPackage, listPackage))
                 ),
                 List.of(tokenPackage)
         );
@@ -35,11 +37,13 @@ public class GenerateAst {
                         new Type("Expression", List.of("Expr expression"), List.of(exprPackage)),
                         new Type("Print", List.of("Expr expression"), List.of(exprPackage)),
                         new Type("Var", List.of("Token name", "Expr initializer"), List.of(tokenPackage, exprPackage)),
-                        new Type("Block", List.of("List<Stmt> statements"), List.of("java.util.List")),
+                        new Type("Block", List.of("List<Stmt> statements"), List.of(listPackage)),
                         new Type("If", List.of("Expr condition", "Stmt thenBranch", "Stmt elseBranch"), List.of(exprPackage)),
                         new Type("While", List.of("Expr condition", "Stmt body"), List.of(exprPackage)),
                         new Type("Continue", List.of("Token token"), List.of(tokenPackage)),
-                        new Type("Break", List.of("Token token"), List.of(tokenPackage))
+                        new Type("Break", List.of("Token token"), List.of(tokenPackage)),
+                        new Type("Function", List.of("Token name", "List<Token> params", "List<Stmt> body"), List.of(tokenPackage, listPackage)),
+                        new Type("Return", List.of("Token keyword", "Expr value"), List.of(tokenPackage, exprPackage))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

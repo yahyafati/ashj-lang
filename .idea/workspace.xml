@@ -4,9 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="Complex test">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="bb404fd8-caad-467e-84c5-f1ef77f598ab" name="Changes" comment="remove workspace.xml from git">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/AshCallable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/AshFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/ReturnException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Literal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Logical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Logical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Unary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/expr/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Break.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Break.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Continue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Continue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Print.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Var.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/ash/stmt/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yahya/interpreter/tool/GenerateAst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.ash" beforeDir="false" afterPath="$PROJECT_DIR$/test.ash" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,7 +374,7 @@
       <workItem from="1724519770340" duration="6977000" />
       <workItem from="1724589190814" duration="7231000" />
       <workItem from="1724603484821" duration="4086000" />
-      <workItem from="1724956136571" duration="110000" />
+      <workItem from="1724956136571" duration="5218000" />
     </task>
     <task id="LOCAL-00001" summary="added Scanner class">
       <created>1684582314293</created>
@@ -554,7 +574,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724607416357</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="remove workspace.xml from git">
+      <option name="closed" value="true" />
+      <created>1724956257395</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1724956257395</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +616,8 @@
     <MESSAGE value="Added for loops" />
     <MESSAGE value="Added break and continue statements" />
     <MESSAGE value="Complex test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complex test" />
+    <MESSAGE value="remove workspace.xml from git" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove workspace.xml from git" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

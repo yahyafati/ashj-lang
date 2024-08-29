@@ -61,6 +61,20 @@ public class AstPrinter implements Visitor<String> {
     }
 
     @Override
+    public String visitCallExpr(Call expr) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(expr.callee.accept(this)).append("(");
+        for (Expr argument : expr.arguments) {
+            builder.append(argument.accept(this)).append(", ");
+        }
+        if (!expr.arguments.isEmpty()) {
+            builder.delete(builder.length() - 2, builder.length());
+        }
+        builder.append(")");
+        return builder.toString();
+    }
+
+    @Override
     public String visitBinaryExpr(Binary expr) {
         return parenthesize(expr.operator.lexeme, expr.left, expr.right);
     }
