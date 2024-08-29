@@ -267,7 +267,7 @@ public class Interpreter implements
 
     @Override
     public Void visitFunctionStmt(Function stmt) {
-        AshFunction function = new AshFunction(stmt);
+        AshFunction function = new AshFunction(stmt, environment);
         environment.define(stmt.name.lexeme, function);
         return null;
     }

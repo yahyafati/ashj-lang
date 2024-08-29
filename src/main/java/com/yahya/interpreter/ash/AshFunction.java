@@ -8,8 +8,11 @@ import java.util.List;
 public class AshFunction implements AshCallable {
     private final Function declaration;
 
-    public AshFunction(Function declaration) {
+    private final Environment closure;
+
+    public AshFunction(Function declaration, Environment closure) {
         this.declaration = declaration;
+        this.closure = closure;
     }
 
     @Override
@@ -19,7 +22,7 @@ public class AshFunction implements AshCallable {
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
-        Environment environment = new Environment(interpreter.globals);
+        Environment environment = new Environment(closure);
         for (int i = 0; i < declaration.params.size(); i++) {
             environment.define(declaration.params.get(i).lexeme, arguments.get(i));
         }
