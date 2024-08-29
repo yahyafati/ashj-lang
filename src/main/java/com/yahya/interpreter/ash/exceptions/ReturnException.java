@@ -1,4 +1,4 @@
-package com.yahya.interpreter.ash;
+package com.yahya.interpreter.ash.exceptions;
 
 public class ReturnException extends RuntimeException {
     final Object value;
