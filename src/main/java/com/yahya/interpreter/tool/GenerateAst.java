@@ -43,7 +43,8 @@ public class GenerateAst {
                         new Type("Continue", List.of("Token token"), List.of(tokenPackage)),
                         new Type("Break", List.of("Token token"), List.of(tokenPackage)),
                         new Type("Function", List.of("Token name", "List<Token> params", "List<Stmt> body"), List.of(tokenPackage, listPackage)),
-                        new Type("Return", List.of("Token keyword", "Expr value"), List.of(tokenPackage, exprPackage))
+                        new Type("Return", List.of("Token keyword", "Expr value"), List.of(tokenPackage, exprPackage)),
+                        new Type("Class", List.of("Token name", "List<Function> methods"), List.of(tokenPackage, exprPackage, listPackage))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

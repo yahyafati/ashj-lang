@@ -7,6 +7,11 @@ public interface VisitorAdaptor<R> extends Visitor<R> {
     }
 
     @Override
+    default R visitClassStmt(Class stmt) {
+        return null;
+    }
+
+    @Override
     default R visitPrintStmt(Print stmt) {
         return null;
     }

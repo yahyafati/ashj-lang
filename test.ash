@@ -1,12 +1,5 @@
-fun closureExample() {
-    var x = 10;
-    fun closure() {
-        var x = 12;
-        x = x + 1;
-        print "Closure x: " + x;
-    }
-    closure();
-    print "Outer x: " + x;
-}
+class Bagel {}
 
-closureExample();
+var bagel = Bagel();
+
+print bagel; // Prints "Bagel instance".

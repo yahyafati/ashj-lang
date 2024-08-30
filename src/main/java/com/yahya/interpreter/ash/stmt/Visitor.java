@@ -20,4 +20,6 @@ public interface Visitor<R> {
     R visitFunctionStmt(Function stmt);
 
     R visitReturnStmt(Return stmt);
+
+    R visitClassStmt(Class stmt);
 }

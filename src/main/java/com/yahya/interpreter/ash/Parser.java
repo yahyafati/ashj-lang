@@ -2,6 +2,7 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.stmt.Class;
 import com.yahya.interpreter.ash.stmt.*;
 
 import java.lang.annotation.ElementType;
@@ -35,7 +36,8 @@ public class Parser {
 
     private Stmt declaration() {
         try {
-            if (match(FUN)) return function("function");
+            if (match(CLASS)) return classDeclaration();
+            if (match(FUN)) return functionDeclaration("function");
             if (match(VAR)) return varDeclaration();
 
             return statement();
@@ -45,7 +47,20 @@ public class Parser {
         }
     }
 
-    private Stmt function(String kind) {
+    private Class classDeclaration() {
+        Token name = consume(IDENTIFIER, "Expect class name.");
+        consume(LEFT_BRACE, "Expect '{' before class body.");
+
+        List<Function> methods = new ArrayList<>();
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            methods.add(functionDeclaration("method"));
+        }
+
+        consume(RIGHT_BRACE, "Expect '}' after class body.");
+        return new Class(name, methods);
+    }
+
+    private Function functionDeclaration(String kind) {
         Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
         consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
         List<Token> parameters = new ArrayList<>();
@@ -63,7 +78,7 @@ public class Parser {
         return new Function(name, parameters, body);
     }
 
-    private Stmt varDeclaration() {
+    private Var varDeclaration() {
         Token name = consume(IDENTIFIER, "Expect variable name.");
         Expr initializer = null;
         if (match(EQUAL)) {

@@ -2,6 +2,7 @@ package com.yahya.interpreter.ash;
 
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.stmt.Class;
 import com.yahya.interpreter.ash.stmt.*;
 
 import java.util.HashMap;
@@ -233,6 +234,12 @@ public class Resolver implements
         return null;
     }
 
+    @Override
+    public Void visitClassStmt(Class stmt) {
+        declare(stmt.name);
+        define(stmt.name);
+        return null;
+    }
 
     private enum FunctionType {
         NONE,

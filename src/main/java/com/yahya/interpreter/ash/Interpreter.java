@@ -3,6 +3,7 @@ package com.yahya.interpreter.ash;
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.exceptions.ReturnException;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.stmt.Class;
 import com.yahya.interpreter.ash.stmt.*;
 
 import java.util.ArrayList;
@@ -298,6 +299,14 @@ public class Interpreter implements
         Object value = null;
         if (stmt.value != null) value = evaluate(stmt.value);
         throw new ReturnException(value);
+    }
+
+    @Override
+    public Void visitClassStmt(Class stmt) {
+        environment.define(stmt.name.lexeme, null);
+        AshClass aClass = new AshClass(stmt.name.lexeme);
+        environment.assign(stmt.name, aClass);
+        return null;
     }
 
     void executeBlock(List<Stmt> statements, Environment environment) {
