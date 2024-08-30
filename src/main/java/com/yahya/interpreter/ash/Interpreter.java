@@ -165,6 +165,11 @@ public class Interpreter implements
     }
 
     @Override
+    public Object visitThisExpr(This expr) {
+        return lookUpVariable(expr.keyword, expr);
+    }
+
+    @Override
     public Object visitLiteralExpr(Literal expr) {
         return expr.value;
     }
@@ -311,7 +316,7 @@ public class Interpreter implements
 
     @Override
     public Void visitFunctionStmt(Function stmt) {
-        AshFunction function = new AshFunction(stmt, environment);
+        AshFunction function = new AshFunction(stmt, environment, false);
         environment.define(stmt.name.lexeme, function);
         return null;
     }
@@ -328,7 +333,7 @@ public class Interpreter implements
         environment.define(stmt.name.lexeme, null);
         Map<String, AshFunction> methods = new HashMap<>();
         for (Function method : stmt.methods) {
-            AshFunction function = new AshFunction(method, environment);
+            AshFunction function = new AshFunction(method, environment, Function.isInitFunction(method));
             methods.put(method.name.lexeme, function);
         }
         AshClass aClass = new AshClass(stmt.name.lexeme, methods);

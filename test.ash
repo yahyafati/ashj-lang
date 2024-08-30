@@ -1,9 +1,14 @@
 class Bacon {
-    eat() {
-        print "Crunch crunch crunch!";
+
+    init(name) {
+        this.name = name;
+        this.text = "Hello World " + this.name;
+    }
+
+    sayIt() {
+        print this.text;
     }
 }
-var bacon = Bacon();
-print bacon;
 
-bacon.eat();
+var bacon = Bacon("Yahya");
+bacon.sayIt();

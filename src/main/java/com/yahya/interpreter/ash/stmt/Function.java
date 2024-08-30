@@ -15,6 +15,10 @@ public class Function extends Stmt {
         this.body = body;
     }
 
+    public static boolean isInitFunction(Function function) {
+        return function.name.lexeme.equals("init");
+    }
+
     @Override
     public <R> R accept(Visitor<R> visitor) {
         return visitor.visitFunctionStmt(this);

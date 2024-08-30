@@ -9,10 +9,12 @@ public class AshFunction implements AshCallable {
     private final Function declaration;
 
     private final Environment closure;
+    private final boolean isInitializer;
 
-    public AshFunction(Function declaration, Environment closure) {
+    public AshFunction(Function declaration, Environment closure, boolean isInitializer) {
         this.declaration = declaration;
         this.closure = closure;
+        this.isInitializer = isInitializer;
     }
 
     @Override
@@ -30,10 +32,19 @@ public class AshFunction implements AshCallable {
         try {
             interpreter.executeBlock(declaration.body, environment);
         } catch (ReturnException returnValue) {
+            if (isInitializer) {
+                return closure.getAt(0, "this");
+            }
             return returnValue.value;
         }
 
         return null;
+    }
+
+    AshFunction bind(AshInstance instance) {
+        Environment environment = new Environment(closure);
+        environment.define("this", instance);
+        return new AshFunction(declaration, environment, isInitializer);
     }
 
     @Override

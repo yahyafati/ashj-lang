@@ -22,15 +22,16 @@ public class GenerateAst {
         final String listPackage = "java.util.List";
         defineAst(outputDir, "Expr", List.of(
                         new Type("Binary", List.of("Expr left", "Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token")),
-                        new Type("Grouping", List.of("Expr expression"), List.of()),
-                        new Type("Literal", List.of("Object value"), List.of()),
+                        new Type("Grouping", List.of("Expr expression")),
+                        new Type("Literal", List.of("Object value")),
                         new Type("Unary", List.of("Token operator", "Expr right"), List.of(tokenPackage)),
                         new Type("Variable", List.of("Token name"), List.of(tokenPackage)),
                         new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage)),
                         new Type("Logical", List.of("Expr left", "Token operator", "Expr right"), List.of(tokenPackage)),
                         new Type("Call", List.of("Expr callee", "Token paren", "List<Expr> arguments"), List.of(tokenPackage, listPackage)),
                         new Type("Get", List.of("Expr object", "Token name"), List.of(tokenPackage)),
-                        new Type("Set", List.of("Expr object", "Token name", "Expr value"), List.of(tokenPackage))
+                        new Type("Set", List.of("Expr object", "Token name", "Expr value"), List.of(tokenPackage)),
+                        new Type("This", List.of("Token keyword"), List.of(tokenPackage))
                 ),
                 List.of(tokenPackage)
         );
@@ -143,5 +144,9 @@ public class GenerateAst {
     }
 
     private record Type(String name, List<String> fields, List<String> imports) {
+
+        Type(String name, List<String> fields) {
+            this(name, fields, List.of());
+        }
     }
 }

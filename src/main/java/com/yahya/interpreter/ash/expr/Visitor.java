@@ -20,4 +20,6 @@ public interface Visitor<R> {
     R visitGetExpr(Get expr);
 
     R visitSetExpr(Set expr);
+
+    R visitThisExpr(This expr);
 }

@@ -16,6 +16,7 @@ public class Resolver implements
 
     private final Interpreter interpreter;
     private final Stack<Map<String, Boolean>> scopes = new Stack<>();
+    private ClassType currentClass = ClassType.NONE;
     private FunctionType currentFunction = FunctionType.NONE;
     private Integer loopDepth = 0;
 
@@ -190,7 +191,12 @@ public class Resolver implements
             Ash.error(stmt.keyword, "Can't return from top-level code.");
         }
 
-        if (stmt.value != null) resolve(stmt.value);
+        if (stmt.value != null) {
+            if (currentFunction == FunctionType.INITIALIZER) {
+                Ash.error(stmt.keyword, "Can't return a value from an initializer.");
+            }
+            resolve(stmt.value);
+        }
         return null;
     }
 
@@ -236,13 +242,21 @@ public class Resolver implements
 
     @Override
     public Void visitClassStmt(Class stmt) {
+        ClassType enclosingClass = currentClass;
+        currentClass = ClassType.CLASS;
         declare(stmt.name);
         define(stmt.name);
-
+        beginScope();
+        scopes.peek().put("this", true);
         for (Function method : stmt.methods) {
             FunctionType declaration = FunctionType.METHOD;
+            if (Function.isInitFunction(method)) {
+                declaration = FunctionType.INITIALIZER;
+            }
             resolveFunction(method, declaration);
         }
+        endScope();
+        currentClass = enclosingClass;
         return null;
     }
 
@@ -259,9 +273,26 @@ public class Resolver implements
         return null;
     }
 
+    @Override
+    public Void visitThisExpr(This expr) {
+        if (currentClass == ClassType.NONE) {
+            Ash.error(expr.keyword,
+                    "Can't use 'this' outside of a class.");
+            return null;
+        }
+        resolveLocal(expr, expr.keyword);
+        return null;
+    }
+
+    private enum ClassType {
+        NONE,
+        CLASS
+    }
+
     private enum FunctionType {
         NONE,
         FUNCTION,
         METHOD,
+        INITIALIZER,
     }
 }

@@ -20,19 +20,29 @@ public class AshClass implements AshCallable {
 
     @Override
     public int arity() {
-        return 0;
+        AshFunction initializer = findInitMethod();
+        if (initializer == null) return 0;
+        return initializer.arity();
     }
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
-        return new AshInstance(this);
+        AshInstance instance = new AshInstance(this);
+        AshFunction initializer = findInitMethod();
+        if (initializer != null) {
+            initializer.bind(instance).call(interpreter, arguments);
+        }
+        return instance;
     }
 
     public AshFunction findMethod(String name) {
         if (methods.containsKey(name)) {
             return methods.get(name);
         }
-
         return null;
+    }
+
+    public AshFunction findInitMethod() {
+        return findMethod("init");
     }
 }
