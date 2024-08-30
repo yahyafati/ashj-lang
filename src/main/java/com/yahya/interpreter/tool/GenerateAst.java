@@ -18,7 +18,7 @@ public class GenerateAst {
         String outputDir = args[0];
 
         final String tokenPackage = PACKAGE_NAME + ".Token";
-        final String exprPackage = PACKAGE_NAME + ".expr.Expr";
+        final String exprPackage = PACKAGE_NAME + ".expr.*";
         final String listPackage = "java.util.List";
         defineAst(outputDir, "Expr", List.of(
                         new Type("Binary", List.of("Expr left", "Token operator", "Expr right"), List.of(PACKAGE_NAME + ".Token")),
@@ -31,7 +31,8 @@ public class GenerateAst {
                         new Type("Call", List.of("Expr callee", "Token paren", "List<Expr> arguments"), List.of(tokenPackage, listPackage)),
                         new Type("Get", List.of("Expr object", "Token name"), List.of(tokenPackage)),
                         new Type("Set", List.of("Expr object", "Token name", "Expr value"), List.of(tokenPackage)),
-                        new Type("This", List.of("Token keyword"), List.of(tokenPackage))
+                        new Type("This", List.of("Token keyword"), List.of(tokenPackage)),
+                        new Type("Super", List.of("Token keyword", "Token method"), List.of(tokenPackage))
                 ),
                 List.of(tokenPackage)
         );
@@ -47,7 +48,7 @@ public class GenerateAst {
                         new Type("Break", List.of("Token token"), List.of(tokenPackage)),
                         new Type("Function", List.of("Token name", "List<Token> params", "List<Stmt> body"), List.of(tokenPackage, listPackage)),
                         new Type("Return", List.of("Token keyword", "Expr value"), List.of(tokenPackage, exprPackage)),
-                        new Type("Class", List.of("Token name", "List<Function> methods"), List.of(tokenPackage, exprPackage, listPackage))
+                        new Type("Class", List.of("Token name", "Variable superclass", "List<Function> methods"), List.of(tokenPackage, exprPackage, listPackage))
                 ),
                 List.of(tokenPackage, exprPackage)
         );

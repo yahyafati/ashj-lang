@@ -17,6 +17,10 @@ public class AshFunction implements AshCallable {
         this.isInitializer = isInitializer;
     }
 
+    public static boolean isInitFunction(Function method) {
+        return method.name.lexeme.equals("init");
+    }
+
     @Override
     public int arity() {
         return declaration.params.size();

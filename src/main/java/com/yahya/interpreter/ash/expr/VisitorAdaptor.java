@@ -52,5 +52,13 @@ public interface VisitorAdaptor<R> extends Visitor<R> {
         return null;
     }
 
+    @Override
+    default R visitThisExpr(This expr) {
+        return null;
+    }
 
+    @Override
+    default R visitSuperExpr(Super expr) {
+        return null;
+    }
 }

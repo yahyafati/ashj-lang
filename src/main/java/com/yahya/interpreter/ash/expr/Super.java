@@ -2,15 +2,17 @@ package com.yahya.interpreter.ash.expr;
 
 import com.yahya.interpreter.ash.Token;
 
-public class This extends Expr {
+public class Super extends Expr {
     public final Token keyword;
+    public final Token method;
 
-    public This(Token keyword) {
+    public Super(Token keyword, Token method) {
         this.keyword = keyword;
+        this.method = method;
     }
 
     @Override
     public <R> R accept(Visitor<R> visitor) {
-        return visitor.visitThisExpr(this);
+        return visitor.visitSuperExpr(this);
     }
 }

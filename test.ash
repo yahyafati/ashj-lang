@@ -1,14 +1,16 @@
-class Bacon {
+class Animal {
 
-    init(name) {
-        this.name = name;
-        this.text = "Hello World " + this.name;
-    }
-
-    sayIt() {
-        print this.text;
+    name() {
+        return "Animal";
     }
 }
 
-var bacon = Bacon("Yahya");
-bacon.sayIt();
+class Dog < Animal {
+
+    name() {
+        return "Dog";
+    }
+}
+
+var dog = Dog();
+print dog.name();

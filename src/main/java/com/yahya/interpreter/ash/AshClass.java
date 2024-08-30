@@ -7,8 +7,10 @@ public class AshClass implements AshCallable {
 
     public final String name;
     private final Map<String, AshFunction> methods;
+    private final AshClass superclass;
 
-    public AshClass(String name, Map<String, AshFunction> methods) {
+    public AshClass(String name, AshClass superclass, Map<String, AshFunction> methods) {
+        this.superclass = superclass;
         this.name = name;
         this.methods = methods;
     }
@@ -38,6 +40,10 @@ public class AshClass implements AshCallable {
     public AshFunction findMethod(String name) {
         if (methods.containsKey(name)) {
             return methods.get(name);
+        }
+
+        if (superclass != null) {
+            return superclass.findMethod(name);
         }
         return null;
     }

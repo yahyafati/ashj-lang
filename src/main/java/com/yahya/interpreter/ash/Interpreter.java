@@ -170,6 +170,22 @@ public class Interpreter implements
     }
 
     @Override
+    public Object visitSuperExpr(Super expr) {
+        int distance = locals.get(expr);
+        AshClass superclass = (AshClass) environment.getAt(distance, "super");
+
+        AshInstance object = (AshInstance) environment.getAt(
+                distance - 1, "this");
+
+        AshFunction method = superclass.findMethod(expr.method.lexeme);
+
+        if (method == null) {
+            throw new RuntimeError(expr.method, "Undefined property '" + expr.method.lexeme + "'.");
+        }
+        return method.bind(object);
+    }
+
+    @Override
     public Object visitLiteralExpr(Literal expr) {
         return expr.value;
     }
@@ -330,13 +346,27 @@ public class Interpreter implements
 
     @Override
     public Void visitClassStmt(Class stmt) {
+        Object superclass = null;
+        if (stmt.superclass != null) {
+            superclass = evaluate(stmt.superclass);
+            if (!(superclass instanceof AshClass)) {
+                throw new RuntimeError(stmt.superclass.name, "Superclass must be a class");
+            }
+        }
         environment.define(stmt.name.lexeme, null);
+        if (stmt.superclass != null) {
+            environment = new Environment(environment);
+            environment.define("super", superclass);
+        }
         Map<String, AshFunction> methods = new HashMap<>();
         for (Function method : stmt.methods) {
-            AshFunction function = new AshFunction(method, environment, Function.isInitFunction(method));
+            AshFunction function = new AshFunction(method, environment, AshFunction.isInitFunction(method));
             methods.put(method.name.lexeme, function);
         }
-        AshClass aClass = new AshClass(stmt.name.lexeme, methods);
+        AshClass aClass = new AshClass(stmt.name.lexeme, (AshClass) superclass, methods);
+        if (stmt.superclass != null) {
+            environment = environment.enclosing;
+        }
         environment.assign(stmt.name, aClass);
         return null;
     }

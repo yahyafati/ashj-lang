@@ -22,4 +22,6 @@ public interface Visitor<R> {
     R visitSetExpr(Set expr);
 
     R visitThisExpr(This expr);
+
+    R visitSuperExpr(Super expr);
 }
