@@ -75,6 +75,16 @@ public class AstPrinter implements Visitor<String> {
     }
 
     @Override
+    public String visitGetExpr(Get expr) {
+        return expr.object.accept(this) + "." + expr.name.lexeme;
+    }
+
+    @Override
+    public String visitSetExpr(Set expr) {
+        return expr.object.accept(this) + "." + expr.name.lexeme + " = " + expr.value.accept(this);
+    }
+
+    @Override
     public String visitBinaryExpr(Binary expr) {
         return parenthesize(expr.operator.lexeme, expr.left, expr.right);
     }

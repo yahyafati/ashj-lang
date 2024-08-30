@@ -8,12 +8,22 @@ public interface VisitorAdaptor<R> extends Visitor<R> {
     }
 
     @Override
+    default R visitGetExpr(Get expr) {
+        return null;
+    }
+
+    @Override
     default R visitGroupingExpr(Grouping expr) {
         return null;
     }
 
     @Override
     default R visitLiteralExpr(Literal expr) {
+        return null;
+    }
+
+    @Override
+    default R visitSetExpr(Set expr) {
         return null;
     }
 

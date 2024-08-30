@@ -28,7 +28,9 @@ public class GenerateAst {
                         new Type("Variable", List.of("Token name"), List.of(tokenPackage)),
                         new Type("Assign", List.of("Token name", "Expr value"), List.of(tokenPackage)),
                         new Type("Logical", List.of("Expr left", "Token operator", "Expr right"), List.of(tokenPackage)),
-                        new Type("Call", List.of("Expr callee", "Token paren", "List<Expr> arguments"), List.of(tokenPackage, listPackage))
+                        new Type("Call", List.of("Expr callee", "Token paren", "List<Expr> arguments"), List.of(tokenPackage, listPackage)),
+                        new Type("Get", List.of("Expr object", "Token name"), List.of(tokenPackage)),
+                        new Type("Set", List.of("Expr object", "Token name", "Expr value"), List.of(tokenPackage))
                 ),
                 List.of(tokenPackage)
         );

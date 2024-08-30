@@ -16,4 +16,8 @@ public interface Visitor<R> {
     R visitLogicalExpr(Logical expr);
 
     R visitCallExpr(Call expr);
+
+    R visitGetExpr(Get expr);
+
+    R visitSetExpr(Set expr);
 }

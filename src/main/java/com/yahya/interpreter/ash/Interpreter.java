@@ -143,6 +143,28 @@ public class Interpreter implements
     }
 
     @Override
+    public Object visitGetExpr(Get expr) {
+        Object object = evaluate(expr.object);
+        if (object instanceof AshInstance instance) {
+            return instance.get(expr.name);
+        }
+
+        throw new RuntimeError(expr.name, "Only instances have properties.");
+    }
+
+    @Override
+    public Object visitSetExpr(Set expr) {
+        Object object = evaluate(expr.object);
+        if (!(object instanceof AshInstance)) {
+            throw new RuntimeError(expr.name,
+                    "Only instances have fields.");
+        }
+        Object value = evaluate(expr.value);
+        ((AshInstance) object).set(expr.name, value);
+        return value;
+    }
+
+    @Override
     public Object visitLiteralExpr(Literal expr) {
         return expr.value;
     }
@@ -304,7 +326,12 @@ public class Interpreter implements
     @Override
     public Void visitClassStmt(Class stmt) {
         environment.define(stmt.name.lexeme, null);
-        AshClass aClass = new AshClass(stmt.name.lexeme);
+        Map<String, AshFunction> methods = new HashMap<>();
+        for (Function method : stmt.methods) {
+            AshFunction function = new AshFunction(method, environment);
+            methods.put(method.name.lexeme, function);
+        }
+        AshClass aClass = new AshClass(stmt.name.lexeme, methods);
         environment.assign(stmt.name, aClass);
         return null;
     }
