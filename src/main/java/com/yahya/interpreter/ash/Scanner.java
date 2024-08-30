@@ -106,9 +106,9 @@ public class Scanner {
     private void string() {
         while (peek() != '"' && !isAtEnd()) {
             if (peek() == '\n') line++; // so handles multi-line strings
-            else if (peek() == '\\') {
-                advance(); // escape the next character because of the escape character
-            }
+//            else if (peek() == '\\') {
+//                advance(); // escape the next character because of the escape character
+//            }
             advance();
         }
         if (isAtEnd()) {

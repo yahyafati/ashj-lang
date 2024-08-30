@@ -1,16 +1,4 @@
-class Animal {
+var s = "\This is so cool!
+";
 
-    name() {
-        return "Animal";
-    }
-}
-
-class Dog < Animal {
-
-    name() {
-        return "Dog";
-    }
-}
-
-var dog = Dog();
-print dog.name();
+print s;

@@ -93,7 +93,7 @@ public class Ash {
 
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
-            System.out.println("Usage: jlox [script]");
+            System.out.println("Usage: ashj [script]");
             System.exit(64); // 64 is the exit code for command line usage error
         } else if (args.length == 1) {
             runFile(args[0]);
