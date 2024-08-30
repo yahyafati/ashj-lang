@@ -3,6 +3,7 @@ package com.yahya.interpreter.ash;
 import com.yahya.interpreter.Ash;
 import com.yahya.interpreter.ash.exceptions.ReturnException;
 import com.yahya.interpreter.ash.expr.*;
+import com.yahya.interpreter.ash.nativeFunctions.NativeFunctions;
 import com.yahya.interpreter.ash.stmt.Class;
 import com.yahya.interpreter.ash.stmt.*;
 
@@ -22,22 +23,23 @@ public class Interpreter implements
     private boolean continueFlag = false;
 
     public Interpreter() {
-        globals.define("clock", new AshCallable() {
-            @Override
-            public int arity() {
-                return 0;
-            }
+        NativeFunctions.NATIVE_FUNCTIONS.forEach(globals::define);
+    }
 
-            @Override
-            public Object call(Interpreter interpreter, List<Object> arguments) {
-                return (double) System.currentTimeMillis() / 1000.0;
-            }
+    public static String stringify(Object object) {
+        if (object == null) return "nil";
+        if (object instanceof Double) {
+            return stringifyDouble((Double) object);
+        }
+        return object.toString();
+    }
 
-            @Override
-            public String toString() {
-                return "<native fn>";
-            }
-        });
+    public static String stringifyDouble(Double object) {
+        String text = object.toString();
+        if (text.endsWith(".0")) {
+            text = text.substring(0, text.length() - 2);
+        }
+        return text;
     }
 
     public void resolve(Expr expr, int depth) {
@@ -242,22 +244,6 @@ public class Interpreter implements
 
     private void execute(Stmt stmt) {
         stmt.accept(this);
-    }
-
-    private String stringify(Object object) {
-        if (object == null) return "nil";
-        if (object instanceof Double) {
-            return stringifyDouble((Double) object);
-        }
-        return object.toString();
-    }
-
-    private String stringifyDouble(Double object) {
-        String text = object.toString();
-        if (text.endsWith(".0")) {
-            text = text.substring(0, text.length() - 2);
-        }
-        return text;
     }
 
     @Override

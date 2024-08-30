@@ -81,7 +81,7 @@ var age = 3 + 4;
 
 // Functions
 fun greet() {
-    print "Hello, " + name + "!";
+    print("Hello, " + name + "!");
 }
 
 greet(); // Outputs: Hello, ashj!
@@ -98,33 +98,30 @@ class Animal {
 }
 
 var dog = Animal("Dog");
-dog.
-
-speak(); // Outputs: This is a Dog
+dog.speak(); // Outputs: This is a Dog
 ```
 
 ### Control Structures
 
 ```java
 // If-Else Statements
-if(age >18){
-print "Adult";
-        }else{
-print "Not an Adult";
-        }
+if ( age > 18 ) {
+    print("Adult");
+} else {
+    print("Not an Adult");
+}
 
 // While Loop
 var count = 0;
-while(count< 3){
-print count;
-count =count +1;
-        }
+while ( count < 3 ) {
+    print(count);
+    count = count +1;
+}
 
 // For Loop
-        for(
-var i = 0;
-i< 5;i =i +1){
-print i;
+
+for ( var i = 0; i < 5; i = i + 1 ) {
+    print(i);
 }
 ```
 

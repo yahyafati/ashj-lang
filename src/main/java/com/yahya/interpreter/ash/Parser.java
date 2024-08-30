@@ -103,8 +103,6 @@ public class Parser {
 
         if (match(LEFT_BRACE)) return new Block(block());
 
-        if (match(PRINT)) return printStatement();
-
 
         return expressionStatement();
     }
@@ -205,13 +203,6 @@ public class Parser {
         }
         consume(RIGHT_BRACE, "Expect '}' after block.");
         return statements;
-    }
-
-
-    private Stmt printStatement() {
-        Expr value = expression();
-        consume(SEMICOLON, "Expect ';' after value.");
-        return new Print(value);
     }
 
     private Stmt expressionStatement() {
@@ -440,7 +431,6 @@ public class Parser {
                 case FOR:
                 case IF:
                 case WHILE:
-                case PRINT:
                 case RETURN:
                     return;
             }
