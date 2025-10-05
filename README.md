@@ -143,10 +143,6 @@ request. See the `CONTRIBUTING.md` file for more details.
 
 ashj is licensed under the MIT License. See the `LICENSE` file for more information.
 
-Certainly! Here’s how you can include an **Acknowledgements** section in your `README.md` file:
-
----
-
 ## Acknowledgements
 
 AshJ would not have been possible without the inspiration and guidance provided by Robert Nystrom's book, *Crafting
